@@ -1,8 +1,80 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.5, 195 )
+
+[sub_resource type="PhysicsMaterial" id=3]
+bounce = 0.7
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 32 )
 
 [node name="Game" type="Node2D"]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 784, 293 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Icon" type="Sprite" parent="StaticBody2D"]
+scale = Vector2( 1, 6.17188 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 550, 512 )
+rotation = 1.5708
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Icon" type="Sprite" parent="StaticBody2D2"]
+scale = Vector2( 1, 6.17188 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2( 166, 347 )
+rotation = 1.5708
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Icon" type="Sprite" parent="StaticBody2D3"]
+scale = Vector2( 1, 6.17188 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+visible = false
+shape = SubResource( 1 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 530, 270 )
+position = Vector2( 530, 284 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 351, 66 )
+rotation = 0.921534
+mass = 100.0
+physics_material_override = SubResource( 3 )
+gravity_scale = 5.53
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Icon" type="Sprite" parent="RigidBody2D"]
+position = Vector2( -4, -5 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2( -3, -7 )
+shape = SubResource( 2 )
