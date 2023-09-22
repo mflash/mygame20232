@@ -4,7 +4,7 @@ export (int) var speed = 200
 export (float) var rotation_speed = 2.5
 export (int) var gravity = 2500
 export (int) var jump_speed = -1000 
-
+export (PackedScene) var box : PackedScene
 onready var target := position
 onready var sprite := $Sprite
 
@@ -63,6 +63,11 @@ func get_side_input():
 
 	if jump and is_on_floor():		
 		velocity.y = jump_speed
+		get_tree().call_group("HUD","updateScore")
+		var b := box.instance()
+		b.position = global_position
+		owner.add_child(b)
+		
 	if right:
 		velocity.x += speed
 		sprite.play("right")
