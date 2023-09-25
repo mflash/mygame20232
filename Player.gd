@@ -92,7 +92,7 @@ func _physics_process(delta):
 	#	velocity =  move_and_slide(velocity)
 	get_side_input()
 	velocity.y += gravity * delta
-	print(velocity)	
+	#print(velocity)	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	#velocity =  move_and_slide(velocity) # 1.
 	#move_and_collide(velocity * delta)
