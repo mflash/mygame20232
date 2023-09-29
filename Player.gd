@@ -5,8 +5,10 @@ export (float) var rotation_speed = 2.5
 export (int) var gravity = 2500
 export (int) var jump_speed = -1000 
 export (PackedScene) var box : PackedScene
+
 onready var target := position
 onready var sprite := $Sprite
+onready var sound := $PlayerSound
 
 var velocity = Vector2.ZERO
 var rotation_dir = 0
@@ -67,6 +69,8 @@ func get_side_input():
 		var b := box.instance()
 		b.position = global_position
 		owner.add_child(b)
+		if not sound.playing:
+			sound.play()			
 		
 	if right:
 		velocity.x += speed
